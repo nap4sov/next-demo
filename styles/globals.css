@@ -44,3 +44,12 @@ a:focus {
   justify-content: center;
   align-items: center;
 }
+
+.grid-stack {
+  min-width: 800px;
+}
+.grid-stack-item-content {
+  padding: 1rem;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+}

@@ -2,6 +2,7 @@
   background-color: black;
   width: 100%;
   padding: 0 5rem;
+  display: flex;
 }
 
 .nav {
@@ -17,4 +18,19 @@
 }
 .link:not(:last-child) {
   margin-right: 1.5rem;
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userMenu p {
+  color: white;
+}
+
+.button {
+  padding: 10px 20px;
+  margin-left: 1.5rem;
 }
