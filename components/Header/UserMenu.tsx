@@ -1,3 +1,5 @@
+import { cookies } from '../../api';
+import { useRouter } from 'next/router';
 import styles from '../../styles/Header.module.css';
 
 interface IUser {
@@ -6,15 +8,19 @@ interface IUser {
 }
 
 export const UserMenu: React.FC<{ user: IUser | undefined }> = ({ user }) => {
+  const router = useRouter();
   return (
     <div className={styles.userMenu}>
-      {user?.email ? (
-        <>
-          <p>{user.name}</p>
-          <button className={styles.button}>Log Out</button>
-        </>
-      ) : (
-        <button className={styles.button}>Log In</button>
+      {user?.email && (
+        <button
+          className={styles.button}
+          onClick={() => {
+            cookies.remove('token');
+            router.reload();
+          }}
+        >
+          Log Out
+        </button>
       )}
     </div>
   );

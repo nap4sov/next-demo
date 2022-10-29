@@ -46,10 +46,33 @@ a:focus {
 }
 
 .grid-stack {
-  min-width: 800px;
+  width: 400px;
 }
+.grid-stack.jokes {
+  width: 800px;
+}
+
 .grid-stack-item-content {
   padding: 1rem;
   border: 1px solid #eaeaea;
   border-radius: 10px;
+}
+
+.canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.canvas.dark {
+  background-color: black;
+}
+
+.main-info {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
 }

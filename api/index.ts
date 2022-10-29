@@ -2,6 +2,7 @@ import { IPostDetails, IResponse } from '../interfaces/posts';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import { json } from 'stream/consumers';
+import { IUser } from '../interfaces/user';
 
 const baseURL = 'http://test-blog-api.ficuslife.com/api/v1';
 export const cookies = new Cookies();
@@ -50,7 +51,9 @@ export const logIn = async (credentials: Inputs): Promise<string> => {
   return token;
 };
 
-export const getUserInfo = async (token: string) => {
+export const getUserInfo = async (): Promise<IUser> => {
+  const token = cookies.get('token');
+
   const response = await fetch(baseURL + '/auth/user', {
     method: 'GET',
     headers: {

@@ -2,12 +2,17 @@ import { PostDetails } from '../../components/Posts/PostDetails';
 import { Meta } from '../../components/Meta';
 import { getPostDetails, getAllPosts } from '../../api';
 import { IPostDetails } from '../../interfaces/posts';
+import { Stars } from '@react-three/drei';
+import { CanvasRoot } from '../../components/Canvas';
 
 const Post: React.FC<{ post: IPostDetails }> = ({ post }) => {
   return (
     <>
       <Meta title={post.title} description={post.description} />
       <PostDetails post={post} />
+      <CanvasRoot className="dark">
+        <Stars />
+      </CanvasRoot>
     </>
   );
 };

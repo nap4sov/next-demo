@@ -1,6 +1,6 @@
 import { DadJokes } from '../components/DadJokes';
-import { getJokes } from '../api';
 
+import { getJokes } from '../api';
 interface IProps {
   jokes: { id: string; joke: string }[];
 }

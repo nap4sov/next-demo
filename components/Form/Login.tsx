@@ -1,6 +1,8 @@
 import { LOGIN_FIELDS } from '../../constants/signupInfo';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useRouter } from 'next/router';
 import { logIn } from '../../api';
+import { redirect } from 'next/dist/server/api-utils';
 
 interface Inputs {
   email: string;
@@ -9,9 +11,11 @@ interface Inputs {
 
 export const Login: React.FC = () => {
   const { register, formState, handleSubmit } = useForm<Inputs>();
+  const router = useRouter();
   const onSubmit: SubmitHandler<Inputs> = async data => {
-    const res = await logIn(data);
-    console.log(res);
+    await logIn(data);
+    // router.push('/posts');
+    router.reload();
   };
 
   return (
