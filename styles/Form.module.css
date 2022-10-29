@@ -1,0 +1,30 @@
+.wrap {
+  width: 250px;
+  margin-bottom: 1.5rem;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  height: 3rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: transparent !important;
+  outline: none;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.label {
+  font-size: 14px;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid black;
+  background-color: transparent;
+  cursor: pointer;
+}

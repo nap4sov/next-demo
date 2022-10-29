@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     (async () => {
       const token = cookies.get('token');
       if (!token) return;
-      const userInfo = await getUserInfo();
+      const userInfo = await getUserInfo(token);
       setUser(userInfo);
     })();
   }, [Component]);
@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Header user={user} />
 
       <main className="main">
-        <Component {...pageProps} user={user} />
+        <Component {...pageProps} />
       </main>
     </SWRConfig>
   );

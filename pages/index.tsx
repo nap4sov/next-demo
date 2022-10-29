@@ -4,6 +4,8 @@ import { MainInfo } from '../components/MainInfo';
 import { Cloud } from '@react-three/drei';
 import { IUser } from '../interfaces/user';
 import { Login } from '../components/Form/Login';
+import { GetServerSidePropsContext } from 'next';
+import { getUserInfo } from '../api';
 
 const Home: React.FC<{ user: IUser }> = ({ user }) => {
   return (
@@ -25,3 +27,16 @@ const Home: React.FC<{ user: IUser }> = ({ user }) => {
 };
 
 export default Home;
+
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext,
+) => {
+  const token = await context.req.cookies['token'];
+  const user = await getUserInfo(token as string);
+
+  return {
+    props: {
+      user,
+    },
+  };
+};
