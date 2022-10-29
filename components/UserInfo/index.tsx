@@ -1,41 +1,45 @@
 import { IUser } from '../../interfaces/user';
-import { GridStack } from 'gridstack';
+import { GridStack, GridStackElement } from 'gridstack';
 import 'gridstack/dist/gridstack.min.css';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 export const UserInfo: React.FC<{ user: IUser }> = ({ user }) => {
-  const grid =
-    typeof window === 'undefined'
-      ? ''
-      : GridStack.init({
-          disableOneColumnMode: true,
-          resizable: { handles: 'all' },
-        });
-
-  useEffect(() => {
-    if (!user) return;
-
-    const elements = Object.keys(user).reduce((acc: string[], key) => {
-      if (key === '_id' || key === '__v' || key === 'name') return acc;
-      const objKey = key as keyof IUser;
-      if (user[objKey] === '') return acc;
-      return [
-        ...acc,
-        `<div>
+  const elements = useMemo(
+    () =>
+      user &&
+      Object.keys(user).reduce((acc: string[], key) => {
+        if (key === '_id' || key === '__v' || key === 'name') return acc;
+        const objKey = key as keyof IUser;
+        if (user[objKey] === '') return acc;
+        return [
+          ...acc,
+          `<div>
               <h3>${key.toUpperCase()}</h3>
               <p>${user[objKey]}</p>
             </div>`,
-      ];
-    }, []);
+        ];
+      }, []),
+    [user],
+  );
 
-    const serializedData = elements.map(element => ({
-      w: 6,
-      h: 5,
-      content: element,
-    }));
+  const serializedData = useMemo(
+    () =>
+      elements.map(element => ({
+        w: 6,
+        h: 5,
+        content: element,
+      })),
+    [elements],
+  );
 
-    grid && grid.load(serializedData);
-  }, [user, grid]);
+  useEffect(() => {
+    const grid = GridStack.init({
+      disableOneColumnMode: true,
+      resizable: { handles: 'all' },
+    }).removeAll(false);
+
+    grid?.load([...serializedData]);
+  }, [serializedData]);
 
   return <div className="grid-stack"></div>;
 };

@@ -15,7 +15,7 @@ export const DadJokes: React.FC<IProps> = ({ jokes }) => {
         content: joke,
       };
     }, []);
-    const jokeGrid = GridStack.init({ removable: true });
+    const jokeGrid = GridStack.init({ removable: true }).removeAll(false);
     jokeGrid?.load(serializedData);
   });
   return <div className="grid-stack jokes"></div>;
