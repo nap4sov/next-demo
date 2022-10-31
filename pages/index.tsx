@@ -1,7 +1,7 @@
 import { Meta } from '../components/Meta';
 import { CanvasRoot } from '../components/Canvas';
 import { MainInfo } from '../components/MainInfo';
-import { Cloud } from '@react-three/drei';
+import { Cloud, Sparkles, Sky } from '@react-three/drei';
 import { IUser } from '../interfaces/user';
 import { Login } from '../components/Form/Login';
 import { GetServerSidePropsContext } from 'next';
@@ -14,13 +14,9 @@ const Home: React.FC<{ user: IUser }> = ({ user }) => {
       {user?._id ? <MainInfo user={user} /> : <Login />}
 
       <CanvasRoot>
-        <Cloud
-          opacity={0.3}
-          speed={0.2} // Rotation speed
-          width={8} // Width of the full cloud
-          depth={1.5} // Z-dir depth
-          segments={20} // Number of particles
-        />
+        <Sky azimuth={0.5} distance={11000} sunPosition={[0, 1, 1]} />
+        <Cloud opacity={0.3} speed={0.2} width={8} depth={3} segments={20} />
+        <Sparkles count={300} size={2} scale={20} color={1} />
       </CanvasRoot>
     </>
   );
