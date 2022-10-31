@@ -1,5 +1,5 @@
 import { NavBar } from './NavBar';
-import styles from '../../styles/Header.module.css';
+import styles from '../../styles/Header.module.scss';
 import { UserMenu } from './UserMenu';
 
 interface IUser {

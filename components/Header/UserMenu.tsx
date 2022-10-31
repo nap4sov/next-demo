@@ -1,6 +1,6 @@
 import { cookies } from '../../api';
 import { useRouter } from 'next/router';
-import styles from '../../styles/Header.module.css';
+import styles from '../../styles/Header.module.scss';
 
 interface IUser {
   name: string;

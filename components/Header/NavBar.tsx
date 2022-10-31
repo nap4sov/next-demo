@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { NAV_ROUTES } from '../../constants/navRoutes';
-import styles from '../../styles/Header.module.css';
+import styles from '../../styles/Header.module.scss';
 
 export const NavBar: React.FC = () => {
   return (

@@ -17,6 +17,12 @@ a:focus {
   color: #0070f3;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -36,6 +42,9 @@ a:focus {
 }
 
 .main {
+  @media screen and (max-width: 767px) {
+    padding: 0 1rem 3rem 1rem;
+  }
   min-height: 100vh;
   padding: 6rem 0 4rem 0;
   flex: 1;
@@ -49,6 +58,9 @@ a:focus {
   width: 400px;
 }
 .grid-stack.jokes {
+  @media screen and (max-width: 767px) {
+    width: 400px;
+  }
   width: 800px;
 }
 
@@ -72,12 +84,29 @@ a:focus {
 }
 
 .main-info {
-  display: flex;
-  justify-content: space-between;
-  width: 800px;
+  width: 400px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+  }
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+  }
+
+  & h1 {
+    text-align: center;
+  }
 }
 
 .blog-img {
+  @media screen and (max-width: 767px) {
+    margin-bottom: 2rem;
+  }
+
   display: block;
   margin: 3rem auto 0 auto;
   cursor: pointer;

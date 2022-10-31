@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { IPost } from '../../interfaces/posts';
-import styles from '../../styles/Posts.module.css';
+import styles from '../../styles/Posts.module.scss';
 
 interface IProps {
   post: IPost;

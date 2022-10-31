@@ -2,6 +2,7 @@ import { PostDetails } from '../../components/Posts/PostDetails';
 import { Meta } from '../../components/Meta';
 import { getPostDetails, getAllPosts } from '../../api';
 import { IPostDetails } from '../../interfaces/posts';
+import { POSTS } from '../../constants/SWRkeys';
 import { Stars } from '@react-three/drei';
 import { CanvasRoot } from '../../components/Canvas';
 
@@ -30,7 +31,7 @@ export const getStaticProps = async (context: { params: { id: string } }) => {
 };
 
 export const getStaticPaths = async () => {
-  const data = await getAllPosts();
+  const data = await getAllPosts(POSTS, 1);
 
   return {
     paths: data.reduce<{ params: { id: string } }[]>((acc, post) => {

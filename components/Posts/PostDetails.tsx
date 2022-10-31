@@ -1,7 +1,7 @@
 import { IPostDetails } from '../../interfaces/posts';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/Posts.module.css';
+import styles from '../../styles/Posts.module.scss';
 import moment from 'moment';
 
 export const PostDetails: React.FC<{ post: IPostDetails }> = ({

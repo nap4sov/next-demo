@@ -1,4 +1,4 @@
-import { IPost, IPostDetails, IResponse } from '../interfaces/posts';
+import { IPost, IPostDetails } from '../interfaces/posts';
 import Cookies from 'universal-cookie';
 import { IUser } from '../interfaces/user';
 import { IInputs } from '../constants/postInfo';
@@ -7,14 +7,17 @@ const baseURL = 'http://test-blog-api.ficuslife.com/api/v1';
 
 export const cookies = new Cookies();
 
-export const getAllPosts = async (): Promise<IPost[]> => {
-  // const response = await fetch(baseURL + '/posts?limit=50&skip=550');
+export const getAllPosts = async (
+  key: string,
+  page: number,
+): Promise<IPost[]> => {
   const response = await fetch(
-    'https://62ece0c2a785760e675ef3df.mockapi.io/articles',
+    'https://62ece0c2a785760e675ef3df.mockapi.io' +
+      key +
+      `?page=${page}&limit=10`,
   );
-  const data = await response.json();
 
-  return data;
+  return response.json();
 };
 
 export const getPostDetails = async (id: string): Promise<IPostDetails> => {

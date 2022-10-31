@@ -1,17 +1,31 @@
 import { PostItem } from './PostItem';
-import styles from '../../styles/Posts.module.css';
-import { IPost } from '../../interfaces/posts';
+import useSWRInfinite, { SWRInfiniteKeyLoader } from 'swr/infinite';
+import { getAllPosts } from '../../api';
+import { POSTS } from '../../constants/SWRkeys';
+import styles from '../../styles/Posts.module.scss';
 
-interface IProps {
-  posts: IPost[];
-}
+const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {
+  if (previousPageData && !previousPageData.length) return null; // reached the end
+  return [POSTS, pageIndex === 0 ? 1 : pageIndex];
+};
 
-export const PostsList: React.FC<IProps> = ({ posts }) => {
+export const PostsList: React.FC = () => {
+  const { data, size, setSize } = useSWRInfinite(getKey, getAllPosts);
+
+  const noMoreData = data && data[data?.length - 1].length < 10;
+
   return (
-    <ul className={styles.grid}>
-      {posts?.map(post => (
-        <PostItem post={post} key={post._id} />
-      ))}
-    </ul>
+    <>
+      <ul className={styles.grid}>
+        {data?.map(page => {
+          return page.map(post => <PostItem post={post} key={post._id} />);
+        })}
+      </ul>
+      {!noMoreData && (
+        <button onClick={() => setSize(size + 1)} className={styles.button}>
+          Load more
+        </button>
+      )}
+    </>
   );
 };

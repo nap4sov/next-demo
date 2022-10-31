@@ -4,17 +4,22 @@ import { getAllPosts } from '../api';
 import { Meta } from '../components/Meta';
 import { Stars } from '@react-three/drei';
 import { CanvasRoot } from '../components/Canvas';
+import { SWRConfig, unstable_serialize } from 'swr';
+import { POSTS } from '../constants/SWRkeys';
 
 interface IProps {
-  posts: IPost[];
+  fallback: { [x: string]: IPost[] };
 }
-const Posts: React.FC<IProps> = ({ posts }) => {
+
+const Posts: React.FC<IProps> = ({ fallback }) => {
+  console.log(fallback);
+
   return (
     <>
       <Meta title="Posts" description="A lot of meaningless posts" />
-
-      <PostsList posts={posts} />
-
+      <SWRConfig value={{ fallback }}>
+        <PostsList />
+      </SWRConfig>
       <CanvasRoot className="dark">
         <Stars />
       </CanvasRoot>
@@ -22,11 +27,13 @@ const Posts: React.FC<IProps> = ({ posts }) => {
   );
 };
 
-export const getServerSideProps = async (): Promise<{ props: IProps }> => {
-  const response = await getAllPosts();
+export const getStaticProps = async (): Promise<{ props: IProps }> => {
+  const response = await getAllPosts(POSTS, 1);
   return {
     props: {
-      posts: response,
+      fallback: {
+        [unstable_serialize([POSTS, 1])]: response,
+      },
     },
   };
 };
