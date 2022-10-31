@@ -16,6 +16,8 @@ export const UserMenu: React.FC<{ user: IUser | undefined }> = ({ user }) => {
           className={styles.button}
           onClick={() => {
             cookies.remove('token');
+            console.log(cookies);
+
             router.reload();
           }}
         >

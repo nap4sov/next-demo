@@ -10,7 +10,7 @@ interface Inputs {
 }
 
 export const Login: React.FC = () => {
-  const { register, formState, handleSubmit } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<Inputs>();
   const router = useRouter();
   const onSubmit: SubmitHandler<Inputs> = async data => {
     await logIn(data);

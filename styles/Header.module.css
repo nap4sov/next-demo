@@ -1,4 +1,7 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: black;
   width: 100%;
   padding: 0 5rem;
@@ -31,6 +34,16 @@
 }
 
 .button {
-  padding: 10px 20px;
-  margin-left: 1.5rem;
+  padding: 1rem;
+  border: 1px solid white;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+
+  transition: transform 300ms linear;
+}
+
+.button:hover,
+.button:focus {
+  transform: scale(1.05);
 }

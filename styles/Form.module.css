@@ -5,6 +5,7 @@
 
 .input {
   display: block;
+  font-family: inherit;
   width: 100%;
   height: 3rem;
   padding: 1rem;
@@ -16,8 +17,33 @@
   border-bottom: 1px solid black;
 }
 
+.postInput {
+  display: block;
+  font-family: inherit;
+  width: 100%;
+  height: 3rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: transparent !important;
+  outline: none;
+  resize: none;
+  border: none;
+  color: white;
+  border-bottom: 1px solid white;
+}
+
 .label {
   font-size: 14px;
+}
+
+.postLabel {
+  font-size: 14px;
+  color: white;
+}
+
+.errorLabel {
+  font-size: 16px;
+  color: red;
 }
 
 .button {
@@ -27,4 +53,25 @@
   border: 1px solid black;
   background-color: transparent;
   cursor: pointer;
+
+  transition: transform 300ms linear;
+}
+
+.postButton {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid white;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+
+  transition: transform 300ms linear;
+}
+
+.button:hover,
+.button:focus,
+.postButton:hover,
+.postButton:focus {
+  transform: scale(1.05);
 }

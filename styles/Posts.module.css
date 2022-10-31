@@ -59,7 +59,11 @@
 }
 
 .image {
+  display: block;
   border-radius: 10px;
-  width: 100%;
-  height: auto;
+  /* width: 100%;
+  height: auto; */
+  height: 300px;
+  width: auto;
+  margin: 0 auto;
 }

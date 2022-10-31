@@ -1,22 +1,57 @@
-import { IPostDetails, IResponse } from '../interfaces/posts';
+import { IPost, IPostDetails, IResponse } from '../interfaces/posts';
 import Cookies from 'universal-cookie';
 import { IUser } from '../interfaces/user';
+import { IInputs } from '../constants/postInfo';
 
 const baseURL = 'http://test-blog-api.ficuslife.com/api/v1';
+
 export const cookies = new Cookies();
 
-export const getAllPosts = async (): Promise<IResponse> => {
-  const response = await fetch(baseURL + '/posts?limit=50');
+export const getAllPosts = async (): Promise<IPost[]> => {
+  // const response = await fetch(baseURL + '/posts?limit=50&skip=550');
+  const response = await fetch(
+    'https://62ece0c2a785760e675ef3df.mockapi.io/articles',
+  );
   const data = await response.json();
 
   return data;
 };
 
 export const getPostDetails = async (id: string): Promise<IPostDetails> => {
-  const response = await fetch(baseURL + '/posts/' + id);
+  // const response = await fetch(baseURL + '/posts/' + id);
+  const response = await fetch(
+    'https://62ece0c2a785760e675ef3df.mockapi.io/articles/' + id,
+  );
   const data = await response.json();
 
   return data;
+};
+
+export const createPost = async (post: IInputs): Promise<boolean> => {
+  const token = cookies.get('token');
+
+  // const response = await fetch(baseURL + '/posts', {
+  //   method: 'POST',
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(post),
+  // });
+
+  const response = await fetch(
+    'https://62ece0c2a785760e675ef3df.mockapi.io/articles/',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(post),
+    },
+  );
+
+  return response.ok;
 };
 
 // export const likePost = async id => (await axios.put(`/posts/like/${id}`)).data;

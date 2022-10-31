@@ -30,7 +30,7 @@ export const getStaticProps = async (context: { params: { id: string } }) => {
 };
 
 export const getStaticPaths = async () => {
-  const { data } = await getAllPosts();
+  const data = await getAllPosts();
 
   return {
     paths: data.reduce<{ params: { id: string } }[]>((acc, post) => {

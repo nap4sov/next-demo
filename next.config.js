@@ -2,6 +2,17 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+};
 
-module.exports = nextConfig
+module.exports = {
+  ...nextConfig,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'loremflickr.com',
+        port: '',
+      },
+    ],
+  },
+};
