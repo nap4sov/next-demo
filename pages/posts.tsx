@@ -1,6 +1,6 @@
 import { PostsList } from '../components/Posts/PostsList';
 import { IPost } from '../interfaces/posts';
-import { getAllPosts } from '../api';
+import { getPaginatedPosts } from '../api';
 import { Meta } from '../components/Meta';
 import { Stars } from '@react-three/drei';
 import { CanvasRoot } from '../components/Canvas';
@@ -28,7 +28,7 @@ const Posts: React.FC<IProps> = ({ fallback }) => {
 };
 
 export const getStaticProps = async (): Promise<{ props: IProps }> => {
-  const response = await getAllPosts(POSTS, 1);
+  const response = await getPaginatedPosts(POSTS, 1);
   return {
     props: {
       fallback: {

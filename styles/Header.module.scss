@@ -1,6 +1,6 @@
 .header {
   background-color: black;
-  padding: 2rem 2rem 0 2rem;
+  padding: 2rem 0 0 0;
   display: flex;
 
   @media screen and (max-width: 767px) {
@@ -31,9 +31,11 @@
   font-size: 20px;
   font-weight: 700;
   padding: 1.5rem;
-}
-.link:not(:last-child) {
-  margin-right: 1.5rem;
+  @media screen and (min-width: 768px) {
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
 }
 
 .userMenu {

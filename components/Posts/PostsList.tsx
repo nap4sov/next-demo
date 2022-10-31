@@ -1,6 +1,6 @@
 import { PostItem } from './PostItem';
 import useSWRInfinite, { SWRInfiniteKeyLoader } from 'swr/infinite';
-import { getAllPosts } from '../../api';
+import { getPaginatedPosts } from '../../api';
 import { POSTS } from '../../constants/SWRkeys';
 import styles from '../../styles/Posts.module.scss';
 
@@ -10,7 +10,7 @@ const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {
 };
 
 export const PostsList: React.FC = () => {
-  const { data, size, setSize } = useSWRInfinite(getKey, getAllPosts);
+  const { data, size, setSize } = useSWRInfinite(getKey, getPaginatedPosts);
 
   const noMoreData = data && data[data?.length - 1].length < 10;
 

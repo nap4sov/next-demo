@@ -7,7 +7,7 @@ const baseURL = 'http://test-blog-api.ficuslife.com/api/v1';
 
 export const cookies = new Cookies();
 
-export const getAllPosts = async (
+export const getPaginatedPosts = async (
   key: string,
   page: number,
 ): Promise<IPost[]> => {
@@ -15,6 +15,14 @@ export const getAllPosts = async (
     'https://62ece0c2a785760e675ef3df.mockapi.io' +
       key +
       `?page=${page}&limit=10`,
+  );
+
+  return response.json();
+};
+
+export const getAllPosts = async (key: string): Promise<IPost[]> => {
+  const response = await fetch(
+    'https://62ece0c2a785760e675ef3df.mockapi.io' + key,
   );
 
   return response.json();

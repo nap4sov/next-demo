@@ -55,7 +55,10 @@ ul {
 }
 
 .grid-stack {
-  width: 400px;
+  width: 350px;
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
 }
 .grid-stack.jokes {
   @media screen and (max-width: 767px) {
@@ -65,6 +68,9 @@ ul {
 }
 
 .grid-stack-item-content {
+  @media screen and (max-width: 767px) {
+    padding: 5px;
+  }
   padding: 1rem;
   border: 1px solid #eaeaea;
   border-radius: 10px;
@@ -84,7 +90,7 @@ ul {
 }
 
 .main-info {
-  width: 400px;
+  width: 350px;
 
   @media screen and (min-width: 768px) {
     display: flex;
