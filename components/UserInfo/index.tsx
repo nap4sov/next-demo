@@ -31,27 +31,27 @@ export const UserInfo: React.FC = () => {
   //   [elements],
   // );
 
-  const serializedData = [
-    {
-      w: 6,
-      h: 5,
-      content: `<div><h3>Email</h3><p>${data?.user?.email}</p></div>`,
-    },
-    {
-      w: 6,
-      h: 5,
-      content: `<div><img src=${data?.user?.image} width="120"/></div>`,
-    },
-  ];
+  // const serializedData = [
+  //   {
+  //     w: 6,
+  //     h: 5,
+  //     content: `<div><h3>Email</h3><p>${data?.user?.email}</p></div>`,
+  //   },
+  //   {
+  //     w: 6,
+  //     h: 5,
+  //     content: `<div><img src=${data?.user?.image} width="120"/></div>`,
+  //   },
+  // ];
 
-  useEffect(() => {
-    const grid = GridStack.init({
-      disableOneColumnMode: true,
-      resizable: { handles: 'all' },
-    }).removeAll(false);
+  // useEffect(() => {
+  //   const grid = GridStack.init({
+  //     disableOneColumnMode: true,
+  //     resizable: { handles: 'all' },
+  //   }).removeAll(false);
 
-    grid?.load([...serializedData]);
-  }, [serializedData]);
+  //   grid?.load([...serializedData]);
+  // }, [serializedData]);
 
   return <div className="grid-stack"></div>;
 };

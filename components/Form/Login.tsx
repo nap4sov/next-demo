@@ -1,6 +1,3 @@
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { useRouter } from 'next/router';
-import { logIn } from '../../api';
 import { signIn } from 'next-auth/react';
 import styles from '../../styles/Form.module.css';
 
