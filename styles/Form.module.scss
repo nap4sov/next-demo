@@ -47,10 +47,12 @@
 }
 
 .button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 10px;
   border: 1px solid black;
   background-color: transparent;
   cursor: pointer;
@@ -67,6 +69,11 @@
   background-color: transparent;
   cursor: pointer;
 
+  &:disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   transition: transform 300ms linear;
 }
 
@@ -78,7 +85,7 @@
 }
 
 .buttonWrapper {
-  width: 150px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;

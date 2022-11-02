@@ -1,20 +1,21 @@
 import { signIn } from 'next-auth/react';
-import styles from '../../styles/Form.module.css';
-
-interface Inputs {
-  email: string;
-  password: string;
-}
+import Image from 'next/image';
+import { SIGNIN_OPTIONS } from '../../constants/signupInfo';
+import styles from '../../styles/Form.module.scss';
 
 export const Login: React.FC = () => {
   return (
     <div className={styles.buttonWrapper}>
-      <button onClick={() => signIn('google')} className={styles.button}>
-        Sign in with Google
-      </button>
-      <button onClick={() => signIn('github')} className={styles.button}>
-        Sign in with GitHub
-      </button>
+      {SIGNIN_OPTIONS.map(({ label, path, provider }) => (
+        <button
+          onClick={() => signIn(provider)}
+          className={styles.button}
+          key={provider}
+        >
+          {label}
+          <Image src={path} alt={provider} width="40" height="40" />
+        </button>
+      ))}
     </div>
   );
 };

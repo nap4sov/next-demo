@@ -21,6 +21,7 @@ export interface IInputs {
   title: string;
   description: string;
   fullText: string;
+  postedBy?: string;
 }
 
 export const defaultValues = {

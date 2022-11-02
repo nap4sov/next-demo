@@ -1,11 +1,10 @@
-import { Stars } from '@react-three/drei';
-import { GetServerSidePropsContext } from 'next';
-import { getUserInfo } from '../../api';
-import { CanvasRoot } from '../../components/Canvas';
+import { getSession } from 'next-auth/react';
+import { GetServerSidePropsContext } from 'next/types';
 import { NewPost } from '../../components/Form/NewPost';
-import { IUser } from '../../interfaces/user';
+import { Stars } from '@react-three/drei';
+import { CanvasRoot } from '../../components/Canvas';
 
-const New: React.FC<{ user: IUser }> = ({ user }) => {
+const New: React.FC = () => {
   return (
     <>
       <NewPost />
@@ -21,10 +20,9 @@ export default New;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext,
 ) => {
-  const token = await context.req.cookies['token'];
-  const user = await getUserInfo(token as string);
+  const session = await getSession(context);
 
-  if (!user._id)
+  if (!session)
     return {
       redirect: {
         destination: '/',
@@ -33,8 +31,6 @@ export const getServerSideProps = async (
     };
 
   return {
-    props: {
-      user,
-    },
+    props: {},
   };
 };
