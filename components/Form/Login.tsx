@@ -13,7 +13,7 @@ export const Login: React.FC = () => {
           key={provider}
         >
           {label}
-          <Image src={path} alt={provider} width="40" height="40" />
+          <Image src={path} alt={provider} width="40" height="40" priority />
         </button>
       ))}
     </div>
