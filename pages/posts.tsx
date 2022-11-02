@@ -12,8 +12,6 @@ interface IProps {
 }
 
 const Posts: React.FC<IProps> = ({ fallback }) => {
-  console.log(fallback);
-
   return (
     <>
       <Meta title="Posts" description="A lot of meaningless posts" />

@@ -7,14 +7,7 @@ const nextConfig = {
 module.exports = {
   ...nextConfig,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'loremflickr.com',
-        port: '0',
-      },
-    ],
-    domains: ['avatars.githubusercontent.com'],
+    domains: ['avatars.githubusercontent.com', 'loremflickr.com'],
   },
   publicRuntimeConfig: {
     GITHUB_ID: process.env.GITHUB_ID,
