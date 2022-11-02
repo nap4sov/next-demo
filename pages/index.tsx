@@ -2,16 +2,16 @@ import { Meta } from '../components/Meta';
 import { CanvasRoot } from '../components/Canvas';
 import { MainInfo } from '../components/MainInfo';
 import { Cloud, Sparkles, Sky } from '@react-three/drei';
-import { IUser } from '../interfaces/user';
 import { Login } from '../components/Form/Login';
-import { GetServerSidePropsContext } from 'next';
-import { getUserInfo } from '../api';
+import { useSession } from 'next-auth/react';
 
-const Home: React.FC<{ user: IUser }> = ({ user }) => {
+const Home: React.FC = () => {
+  const { data } = useSession();
+
   return (
     <>
       <Meta title="* Homepage *" description="lorem ipsum" />
-      {user?._id ? <MainInfo user={user} /> : <Login />}
+      {data?.user?.name ? <MainInfo /> : <Login />}
 
       <CanvasRoot>
         <Sky azimuth={0.5} distance={11000} sunPosition={[0, 1, 1]} />
@@ -24,15 +24,15 @@ const Home: React.FC<{ user: IUser }> = ({ user }) => {
 
 export default Home;
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext,
-) => {
-  const token = await context.req.cookies['token'];
-  const user = await getUserInfo(token as string);
+// export const getServerSideProps = async (
+//   context: GetServerSidePropsContext,
+// ) => {
+//   const token = await context.req.cookies['token'];
+//   const user = await getUserInfo(token as string);
 
-  return {
-    props: {
-      user,
-    },
-  };
-};
+//   return {
+//     props: {
+//       user,
+//     },
+//   };
+// };

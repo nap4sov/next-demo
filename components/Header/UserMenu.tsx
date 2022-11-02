@@ -1,29 +1,23 @@
-import { cookies } from '../../api';
-import { useRouter } from 'next/router';
+import { signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
 import styles from '../../styles/Header.module.scss';
 
-interface IUser {
-  name: string;
-  email: string;
-}
+export const UserMenu: React.FC = () => {
+  const { data } = useSession();
 
-export const UserMenu: React.FC<{ user: IUser | undefined }> = ({ user }) => {
-  const router = useRouter();
+  if (!data?.user?.name) return null;
+
   return (
     <div className={styles.userMenu}>
-      {user?.email && (
-        <button
-          className={styles.button}
-          onClick={() => {
-            cookies.remove('token');
-            console.log(cookies);
-
-            router.reload();
-          }}
-        >
-          Log Out
-        </button>
-      )}
+      <Image
+        src={data?.user?.image as string}
+        alt="user"
+        width="50"
+        height="50"
+      />
+      <button onClick={() => signOut()} className={styles.button}>
+        Sign Out
+      </button>
     </div>
   );
 };

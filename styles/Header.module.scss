@@ -39,6 +39,7 @@
 }
 
 .userMenu {
+  width: 160px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,7 +51,7 @@
 
 .button {
   @media screen and (max-width: 767px) {
-    margin: 0 auto 1rem auto;
+    margin-bottom: 1rem;
   }
   display: block;
   padding: 1rem;

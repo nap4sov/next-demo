@@ -1,14 +1,16 @@
 import Image from 'next/image';
-import { IUser } from '../../interfaces/user';
-import { UserInfo } from '../UserInfo';
+// import { UserInfo } from '../UserInfo';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 
-export const MainInfo: React.FC<{ user: IUser }> = ({ user }) => {
+export const MainInfo: React.FC = () => {
+  const { data } = useSession();
   const router = useRouter();
+
   return (
     <div className="main-info">
       <div>
-        <h1>Welcome, {user.name}</h1>
+        <h1>Welcome, {data?.user?.name}</h1>
         <Image
           src="/blog-icon.png"
           alt="home icon"
@@ -19,7 +21,7 @@ export const MainInfo: React.FC<{ user: IUser }> = ({ user }) => {
           className="blog-img"
         />
       </div>
-      <UserInfo user={user} />
+      {/* <UserInfo /> */}
     </div>
   );
 };

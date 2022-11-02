@@ -4,6 +4,7 @@ import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
 import { cookies, getUserInfo } from '../api';
 import { IUser } from '../interfaces/user';
+import { SessionProvider } from 'next-auth/react';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<IUser>();
@@ -18,11 +19,11 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [Component]);
 
   return (
-    <>
+    <SessionProvider session={pageProps.session}>
       <Header user={user} />
       <main className="main">
         <Component {...pageProps} />
       </main>
-    </>
+    </SessionProvider>
   );
 }

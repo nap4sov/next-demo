@@ -11,8 +11,9 @@ module.exports = {
       {
         protocol: 'http',
         hostname: 'loremflickr.com',
-        port: '',
+        port: '0',
       },
     ],
+    domains: ['avatars.githubusercontent.com'],
   },
 };
