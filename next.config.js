@@ -12,6 +12,9 @@ module.exports = {
       'loremflickr.com',
       'lh3.googleusercontent.com',
       'platform-lookaside.fbsbx.com',
+      'images2.imgbox.com',
+      'i.imgur.com',
+      'live.staticflickr.com',
     ],
   },
   publicRuntimeConfig: {
