@@ -38,6 +38,11 @@
   }
 }
 
+.activeLink {
+  @extend .link;
+  color: #0070f3;
+}
+
 .userMenu {
   width: 160px;
   display: flex;
