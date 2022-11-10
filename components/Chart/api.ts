@@ -13,7 +13,8 @@ export const getAllRates = (): Promise<IRatesResponse[]> =>
     )}&time_end=${genereteCurrentIsoDate(1000)}`,
     {
       headers: {
-        'X-CoinAPI-Key': process.env.NEXT_PUBLIC_COINAPI_KEY || '',
+        'X-CoinAPI-Key':
+          process.env.COINAPI_KEY || process.env.NEXT_PUBLIC_COINAPI_KEY || '',
       },
     },
   ).then(res => {

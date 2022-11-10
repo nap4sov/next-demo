@@ -25,6 +25,7 @@ module.exports = {
     FACEBOOK_ID: process.env.FACEBOOK_ID,
     FACEBOOK_SECRET: process.env.FACEBOOK_SECRET,
     NEXT_PUBLIC_COINAPI_KEY: process.env.NEXT_PUBLIC_COINAPI_KEY,
+    COINAPI_KEY: process.env.COINAPI_KEY,
   },
   env: {
     GITHUB_ID: process.env.GITHUB_ID,
@@ -34,5 +35,6 @@ module.exports = {
     FACEBOOK_ID: process.env.FACEBOOK_ID,
     FACEBOOK_SECRET: process.env.FACEBOOK_SECRET,
     NEXT_PUBLIC_COINAPI_KEY: process.env.NEXT_PUBLIC_COINAPI_KEY,
+    COINAPI_KEY: process.env.COINAPI_KEY,
   },
 };
