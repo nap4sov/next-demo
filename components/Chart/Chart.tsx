@@ -5,20 +5,22 @@ import highchartsData from 'highcharts/modules/data';
 import { useEffect, useState } from 'react';
 import { useChart } from './chartConfig';
 import useWebSocket from 'react-use-websocket';
+import { PriceData } from './types';
 
 if (typeof Highcharts === 'object') {
   HighchartsExporting(Highcharts);
   highchartsData(Highcharts);
 }
 
-export const Chart = () => {
+export const Chart: React.FC<{ data: PriceData }> = ({ data }) => {
   const [date, setDate] = useState(Date.now());
-  const { chartOptions, setChartData } = useChart();
+  const { chartOptions, setChartData } = useChart(data);
+
   const { sendJsonMessage, lastJsonMessage } = useWebSocket(
     'wss://ws.eodhistoricaldata.com/ws/crypto?api_token=demo',
     {
       filter: () => {
-        if (Date.now() - date < 1000) return false;
+        if (Date.now() - date < 5000) return false;
 
         setDate(Date.now());
         return true;
@@ -39,6 +41,7 @@ export const Chart = () => {
       t: number;
       p: string;
     };
+
     const momentaryData = [response.t, Number(response.p)];
 
     setChartData(momentaryData);
