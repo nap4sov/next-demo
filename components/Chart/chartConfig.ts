@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-export const useChart = (data = [Date.now(), 16500]) => {
+export const useChart = (data = [Date.now() - 10000, 16500]) => {
   const config = {
     accessibility: {
       enabled: false,
