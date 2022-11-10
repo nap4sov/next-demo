@@ -123,3 +123,10 @@ ul {
 .blog-img:hover {
   transform: scale(1.1);
 }
+
+.chart {
+  & text {
+    color: white !important;
+    fill: white !important;
+  }
+}

@@ -7,7 +7,7 @@ import styles from '../../styles/Launch.module.scss';
 export const LaunchItem: React.FC<{ launch: ILaunch }> = ({
   launch: { mission_name, rocket, links, details, launch_success, launch_year },
 }) => {
-  // const embedId = launch.links.video_link.split('/').pop();
+  // const embedId = links.video_link.split('/').pop();
   // const opts = {
   //   width: '480px',
   //   height: '320px',

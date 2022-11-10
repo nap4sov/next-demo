@@ -1,0 +1,66 @@
+.wrapper {
+  cursor: default;
+  & table {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 2rem;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  & th,
+  & td {
+    padding: 10px;
+  }
+
+  & span {
+    display: inline-block;
+  }
+}
+
+.head {
+  & th {
+    padding: 0 0 10px 0;
+  }
+}
+
+.body {
+  & tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.editable {
+  font: inherit;
+  outline: none;
+  border: none;
+  background: transparent;
+
+  &:focus {
+    color: darkgreen;
+    border-bottom: 1px solid darkgreen;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  & button {
+    padding: 10px 1rem;
+  }
+}
+
+.filter {
+  background-color: transparent;
+  max-width: 80%;
+  border: none;
+  padding: 5px;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #ececec;
+  }
+}
