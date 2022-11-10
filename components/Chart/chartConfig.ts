@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { date } from 'yup';
+
 import { PriceData } from './types';
 
 export const useChart = (data: PriceData) => {
@@ -39,7 +39,7 @@ export const useChart = (data: PriceData) => {
         },
       },
 
-      // stickToMax: true,
+      stickToMax: true,
     },
     rangeSelector: {
       enabled: false,
@@ -60,7 +60,6 @@ export const useChart = (data: PriceData) => {
 
     data: {
       rows: data,
-      // dateFormat: 'dd/mm/YYYY',
       firstRowAsNames: false,
     },
     series: [

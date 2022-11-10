@@ -3,6 +3,7 @@ import {
   genereteCurrentIsoDate,
   dateHourAgo,
   formatIsoToMs,
+  fallbackData,
 } from './helpers';
 import { IRatesResponse } from './types';
 
@@ -16,15 +17,22 @@ export const getAllRates = (): Promise<IRatesResponse[]> =>
         'X-CoinAPI-Key': process.env.NEXT_PUBLIC_COINAPI_KEY || '',
       },
     },
-  ).then(res => res.json());
+  ).then(res => {
+    if (!res.ok) throw new Error();
+    return res.json();
+  });
 
 export const getPriceData = async () => {
-  const rates = await getAllRates();
-  console.log(rates);
+  try {
+    const rates = await getAllRates();
 
-  return rates.map(rate => {
-    const price = rate.rate_close;
-    const time = rate.time_period_end;
-    return [formatIsoToMs(time), price];
-  });
+    return rates.map(rate => {
+      const price = rate.rate_close;
+      const time = rate.time_period_end;
+      return [formatIsoToMs(time), price];
+    });
+  } catch (error) {
+    console.log(error);
+    return fallbackData;
+  }
 };
