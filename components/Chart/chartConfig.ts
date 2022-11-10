@@ -30,16 +30,9 @@ export const useChart = (data: PriceData) => {
       },
     },
     navigator: {
-      maskFill: 'rgba(0, 180, 50, 0.3)',
-      xAxis: {
-        tickAmount: 10,
-        breaks: {
-          from: Date.now() - 3600000,
-          to: Date.now(),
-        },
-      },
-
-      stickToMax: true,
+      // maskFill: 'rgba(0, 180, 50, 0.3)',
+      // stickToMax: true,
+      enabled: false,
     },
     rangeSelector: {
       enabled: false,

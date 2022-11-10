@@ -6,8 +6,6 @@ import { getPriceData } from '../components/Chart/api';
 import { PriceData } from '../components/Chart/types';
 
 const ChartPage: React.FC<{ data: PriceData }> = ({ data }) => {
-  console.log(data);
-
   return (
     <>
       <Meta title="BTC/USD chart" description="In real time!" />
