@@ -24,6 +24,7 @@ module.exports = {
     GOOGLE_SECRET: process.env.GOOGLE_SECRET,
     FACEBOOK_ID: process.env.FACEBOOK_ID,
     FACEBOOK_SECRET: process.env.FACEBOOK_SECRET,
+    NEXT_PUBLIC_COINAPI_KEY: process.env.NEXT_PUBLIC_COINAPI_KEY,
   },
   env: {
     GITHUB_ID: process.env.GITHUB_ID,
@@ -32,5 +33,6 @@ module.exports = {
     GOOGLE_SECRET: process.env.GOOGLE_SECRET,
     FACEBOOK_ID: process.env.FACEBOOK_ID,
     FACEBOOK_SECRET: process.env.FACEBOOK_SECRET,
+    NEXT_PUBLIC_COINAPI_KEY: process.env.NEXT_PUBLIC_COINAPI_KEY,
   },
 };
