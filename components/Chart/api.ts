@@ -13,18 +13,14 @@ export const getAllRates = (): Promise<IRatesResponse[]> =>
     )}&time_end=${genereteCurrentIsoDate(1000)}`,
     {
       headers: {
-        'X-CoinAPI-Key':
-          process.env.COINAPI_KEY || process.env.NEXT_PUBLIC_COINAPI_KEY || '',
+        'X-CoinAPI-Key': process.env.NEXT_PUBLIC_COINAPI_KEY || '',
       },
     },
-  ).then(res => {
-    if (!res.ok) throw new Error('Not found');
-
-    return res.json();
-  });
+  ).then(res => res.json());
 
 export const getPriceData = async () => {
   const rates = await getAllRates();
+  console.log(rates);
 
   return rates.map(rate => {
     const price = rate.rate_close;
