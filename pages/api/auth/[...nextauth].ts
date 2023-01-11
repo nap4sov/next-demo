@@ -18,4 +18,5 @@ export default NextAuth({
       clientSecret: process.env.FACEBOOK_SECRET as string,
     }),
   ],
+  secret: 'atr5-gt65-9jet',
 });
